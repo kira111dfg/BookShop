@@ -2,9 +2,8 @@
 
 {% block content %}
 
-<div class="main-container">
 <div class="container">
-    {% for book in books %}
+    {% for book in tag %}
     <div class='el'>
         <div class="image">
             <a href="{{book.get_absolute_url}}">
@@ -25,6 +24,6 @@
     </div>
     {% endfor %}
 </div>
-</div>
 
 {% endblock content %}
+

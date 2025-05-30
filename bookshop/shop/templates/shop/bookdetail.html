@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="detail">
+<div class="image">
+   <img src="{{book.img.url}}" style='width:500px;height: 800px;'alt="">
+</div>
+
+<div class='book' style='width: 400px; '>
+<div class="titlegenredetail">
+    {{book.title}}|<a href="{{book.genre.get_absolute_url}}">{{book.genre}}</a>
+</div>
+<div class="authordetail">
+    {% if book.author.is_authenticated %}
+ 
+    {% else %}
+    {{book.author}}
+    {% endif %}
+</div>
+
+ <div class='about'>О книге</div>
+<div class="desc">
+   
+   {{book.description}}
+</div>
+
+
+<div class="tags">
+    {% if book.tag %}
+        {% for t in book.tag.all %}
+            <a href="{{t.get_absolute_url}}"><div class="tag-item">{{ t.title }}</div></a>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="bottom">
+
+{% if book.url %}
+<div class='url'>
+    <a href="{{book.url}}">
+        <button>Скачать</button></a>
+</div>
+{% endif %}
+</div>
+</div>
+
+
+<div class="buy" >
+<div class="price">
+    <div>{{book.price}}$</div>
+    <button type='submit'>КУПИТЬ</button>
+</div>
+<div class="bag">
+   <button>Добавить в корзину</a></button>
+</div>
+</div>
+</div>
+
+
+{% endblock content %}

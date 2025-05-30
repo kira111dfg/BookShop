@@ -1,0 +1,103 @@
+.titlegenre{
+    font-size: 20px;
+}
+
+.book{
+    border-radius: 0px 15px 15px 0px;
+    background-color: rgb(244, 244, 117);
+    position: relative;
+}
+
+.detail{
+    display: flex;
+
+}
+
+.titlegenredetail{
+    font-size: 60px;
+    color: rgb(205, 205, 89);
+    
+}
+
+.authordetail{
+    font-size: 30px;
+    color: yellow;
+}
+
+.buy{
+  
+    background-color: rgb(249, 249, 170);
+    margin-left: 150px;
+    height: max-content;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.price div{
+   font-size: 70px;
+   color: yellow;
+   font-weight: bold;
+
+}
+
+.price button{
+   font-size: 20px;
+   background-color: yellow;
+   border-radius: 20px;
+   color:white;
+   border: none;
+   font-weight: bold;
+   padding: 20px 60px 20px 60px;
+   
+}
+
+a{
+    text-decoration: none;
+}
+
+.bag button{
+   font-size: 15px;
+   background-color: yellow;
+   border-radius: 20px;
+   color:white;
+   border: none;
+   font-weight: bold;
+   padding: 20px 60px 20px 60px;
+   margin-top: 10px;
+   
+}
+
+.desc{
+    
+    font-size: 20px;
+}
+.about{
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.bottom{
+    position: absolute;
+    bottom: 0%;
+}
+
+.url button{
+   font-size: 15px;
+   background-color: yellow;
+   border-radius: 20px;
+   color:white;
+   border: none;
+   font-weight: bold;
+   padding: 10px 10px 10px 10px;
+   margin-top: 10px;
+   
+}
+
+.el{
+    display: inline-block;
+}
+.book1{
+    display: inline;
+}
