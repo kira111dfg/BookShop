@@ -1,0 +1,108 @@
+#avatar-preview {
+  transition: transform 0.3s ease;
+}
+#avatar-preview:hover {
+  transform: scale(1.05);
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff8dc; /* светло-жёлтый фон */
+  color: #333;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.profile-card {
+  background-color: #fff;
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+}
+
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #b8860b;
+}
+
+.profile-card label {
+  font-weight: bold;
+  color: #b8860b;
+}
+
+.profile-card input[type="text"],
+.profile-card input[type="email"],
+.profile-card input[type="file"],
+.profile-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 20px;
+  border: 1px solid #ffd700;
+  border-radius: 8px;
+  background-color: #fffaf0;
+  box-sizing: border-box;
+}
+
+.profile-card button {
+  background-color: #ffd700;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-card button:hover {
+  background-color: #e6be00;
+}
+
+
+.delete-avatar-button {
+  background-color: #ffd700;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+.delete-avatar-button:hover {
+  background-color: #e6be00;
+}
+
+
+.profile-info img{
+    margin-left: 185px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffd700;
+  color: #333;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #e6be00;
+}
+
+
+

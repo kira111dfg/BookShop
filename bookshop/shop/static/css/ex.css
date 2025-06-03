@@ -51,11 +51,16 @@ body {
 
 }
 
-
 .authordetail {
+     padding-bottom: 10px;
+}
+.authordetail a{
     font-size: 18px;
     color: #aa8500;
-    margin-bottom: 20px;
+    font-weight: 600;
+}
+.authordetail a:hover {
+    color: #b59204;
 }
 
 .about {
@@ -146,7 +151,7 @@ body {
     background-color: #ffe066;
 }
 
-.bag button {
+.cart button {
     background-color: #ffe066;
     color: #333;
     padding: 10px 20px;
@@ -156,7 +161,7 @@ body {
     cursor: pointer;
 }
 
-.bag button:hover {
+.cart button:hover {
     background-color: #fff280;
 }
 
@@ -232,3 +237,136 @@ body {
 }
 
 
+
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #b8860b;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none; /* чтобы выглядела как ссылка */
+
+}
+
+.icon-link, .logout-button {
+  color: #b8860b; /* обычный золотистый */
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.icon-link i, .logout-button i {
+  transition: color 0.3s ease;
+}
+
+/* Цвет при наведении */
+.icon-link:hover, .logout-button:hover,
+.icon-link:hover i, .logout-button:hover i {
+  color: #e6b800; /* чуть светлее жёлтый */
+}
+
+/* Цвет при "активном" состоянии (после клика) */
+.active-icon, .active-icon i {
+  color: #f9d71c !important; /* яркий желтый */
+}
+
+.cart-link {
+  background-color: #ffd700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cart-link:hover {
+  background-color: #ffec3d;
+}
+
+
+/* Пагинация */
+.pagination {
+  margin-top: 30px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #4a3b0c;
+  background-color: #ffe99c;
+  font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #ffd34d;
+  color: #2e2308;
+}
+
+.pagination .current {
+  background-color: #f5c542;
+  color: white;
+  cursor: default;
+}
+
+.pagination .disabled {
+  color: #bbb275;
+  background-color: #f4f1d6;
+  cursor: default;
+  pointer-events: none;
+}
+
+
+h2 {
+  color: #b38600;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #fff7d0;
+}
+
+.icon-link1 {
+  color: #b8860b; /* обычный золотистый */
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+/* Цвет при наведении */
+.icon-link1:hover{
+  color: #e6b800; /* чуть светлее жёлтый */
+}

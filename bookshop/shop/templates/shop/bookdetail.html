@@ -12,20 +12,13 @@
     {{book.title}}|<a href="{{book.genre.get_absolute_url}}">{{book.genre}}</a>
 </div>
 <div class="authordetail">
-    {% if book.author.is_authenticated %}
- 
-    {% else %}
-    {{book.author}}
-    {% endif %}
+       <a href="{% url 'profile_author' slug=book.author.slug %}">{{ book.author.user.first_name }} {{ book.author.user.last_name }}</a>
 </div>
 
  <div class='about'>О книге</div>
 <div class="desc">
-   
    {{book.description}}
 </div>
-
-
 <div class="tags">
     {% if book.tag %}
         {% for t in book.tag.all %}
@@ -51,8 +44,8 @@
     <div>{{book.price}}$</div>
     <button type='submit'>КУПИТЬ</button>
 </div>
-<div class="bag">
-   <button>Добавить в корзину</a></button>
+<div class="cart">
+   <a href="{%url 'add_to_cart' book_id=book.id%}"><button>Добавить в корзину</button></a>
 </div>
 </div>
 </div>

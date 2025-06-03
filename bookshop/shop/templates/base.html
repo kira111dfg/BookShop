@@ -16,45 +16,66 @@
     <header style="background-color: #fff3b0; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(255, 204, 0, 0.3); border-bottom: 4px solid #ffe066;">
 
     <div style="font-size: 28px; font-weight: bold; color: #b8860b;">
-    <i class="fas fa-book-open"></i> Книжный Мир
+    <a href="{%url 'booklist'%}" class='icon-link1'><i class="fas fa-book-open"></i> Книжный Мир</a>
   </div>
 
 
   <form method="get" action="{% url 'book_search' %}" style="display: flex; gap: 10px;">
-    <input 
-      type="text" 
-      name="title" 
-      placeholder="Название книги" 
-      value="{{ request.GET.title }}" 
-      style="padding: 10px 14px; border: 2px solid #ffe066; border-radius: 8px; font-size: 16px;"
-    >
-    <input 
-      type="text" 
-      name="genre" 
-      placeholder="Жанр" 
-      value="{{ request.GET.genre }}" 
-      style="padding: 10px 14px; border: 2px solid #ffe066; border-radius: 8px; font-size: 16px;"
-    >
-    <button 
-      type="submit" 
-      style="padding: 10px 16px; background-color: #ffd700; color: #333; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;"
-    >
-      <i class="fas fa-search"></i> Искать
-    </button>
-  </form>
+  <input 
+    type="text" 
+    name="title" 
+    placeholder="Название книги" 
+    value="{{ title }}" 
+    style="padding: 10px 14px; border: 2px solid #ffe066; border-radius: 8px; font-size: 16px;"
+  >
+  <input 
+    type="text" 
+    name="genre" 
+    placeholder="Жанр" 
+    value="{{ genre }}" 
+    style="padding: 10px 14px; border: 2px solid #ffe066; border-radius: 8px; font-size: 16px;"
+  >
+  <button 
+    type="submit" 
+    style="padding: 10px 16px; background-color: #ffd700; color: #333; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;"
+  >
+    <i class="fas fa-search"></i> Искать
+  </button>
+</form>
 
 
-  <div style="display: flex; gap: 20px; align-items: center;">
-    <a href="" style="text-decoration: none; color: #b8860b; font-weight: bold; font-size: 16px;">
+{% if user.is_authenticated %}
+
+<div style="   display: flex;
+    gap: 20px; 
+    align-items: center;" >
+<form method="post" action="{% url 'logout' %}" style="display: inline;">
+  {% csrf_token %}
+  <button type="submit" class="logout-button">
+    <i class="fas fa-sign-in-alt"></i> Выйти
+  </button>
+</form>
+    <a class='icon-link' href="{% url 'profile' %}">
+      <i class="fas fa-user-plus"></i> Профиль
+    </a>
+</div>
+{% else %}
+    <div style="   display: flex;
+    gap: 20px; 
+    align-items: center;" >
+    <a class='icon-link' href="{%url 'login'%}">
       <i class="fas fa-sign-in-alt"></i> Войти
     </a>
-    <a href="" style="text-decoration: none; color: #b8860b; font-weight: bold; font-size: 16px;">
+    <a class='icon-link' href="{% url 'register' %}" >
       <i class="fas fa-user-plus"></i> Регистрация
     </a>
-    <a href="" style="text-decoration: none; background-color: #ffd700; padding: 8px 14px; border-radius: 8px; font-weight: bold; color: #333; display: flex; align-items: center; gap: 6px;">
-      <i class="fas fa-shopping-cart"></i> Корзина
-    </a>
-  </div>
+{% endif %}
+
+  <a href="{%url 'cart_view'%}" class="cart-link">
+    <i class="fas fa-shopping-cart"></i> Корзина
+  </a>
+</div>
+ 
 
 </header>
 

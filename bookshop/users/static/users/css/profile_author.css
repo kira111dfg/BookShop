@@ -1,0 +1,130 @@
+/* Общие настройки */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffdee;
+    margin: 0;
+    padding: 0;
+    color: #4a3b0c;
+}
+
+.profile-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Сайдбар */
+.sidebar {
+    width: 260px;
+    background-color: #fff6cc;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(180, 140, 0, 0.1);
+}
+
+/* Аватар */
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    border: 4px solid #ffdf70;
+    margin-bottom: 20px;
+}
+
+/* Кнопки */
+.btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-link {
+    background-color: #ffe188;
+    color: #4a3b0c;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+    background-color: #ffd34d;
+    color: #2e2308;
+}
+
+/* Контент */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fffef5;
+}
+
+.content h2 {
+    color: #9a7b13;
+    margin-bottom: 30px;
+}
+
+/* Сетка книг */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+}
+
+.el {
+    width: calc(30% - 12px); /* Было 33.333%, теперь компактнее */
+    background-color: #fff7d0;
+    border: 1px solid #ffebb3;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(180, 140, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.el:hover {
+    transform: scale(1.02);
+}
+
+/* Изображение книги */
+.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Название и жанр */
+.titlegenre {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6d550b;
+    text-align: center;
+}
+
+
+/* Пагинация */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #4a3b0c;
+    background-color: #ffe99c;
+}
+
+.pagination a:hover {
+    background-color: #ffd34d;
+    color: #2e2308;
+}
+
+.pagination .current {
+    background-color: #f5c542;
+    color: white;
+}

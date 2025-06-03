@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль {{ profile_author.user.username }}</title>
+    <link rel="stylesheet" href="{% static 'users/css/profile_author.css' %}">
+
+</head>
+<body>
+<div class="profile-container">
+
+    <!-- Сайдбар -->
+    <div class="sidebar">
+        {% if profile_author.avatar and profile_author.avatar.url != '/media/img/sbcf-default-avatar.png' %}
+            <img src="{{ profile_author.avatar.url }}" alt="Аватар" class="avatar">
+        {% else %}
+            <img src="{% static 'img/sbcf-default-avatar.png' %}" alt="Аватар" class="avatar">
+        {% endif %}
+
+        <div class="btn-row">
+            <a href="{% url 'profile_author' slug=profile_author.slug %}" class="btn-link">Книги пользователя</a>
+            <a href="{% url 'profile_about' slug=profile_author.slug %}" class="btn-link">О авторе</a>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content">
+        <h2>Профиль пользователя: {{ profile_author.user.first_name }} {{ profile_author.user.last_name }}</h2>
+
+        <div class="container">
+            {% for book in page_obj %}
+                <div class="el">
+                    <div class="image">
+                        <a href="{{ book.get_absolute_url }}">
+                            <img src="{{ book.img.url }}" alt="{{ book.title }}">
+                        </a>
+                    </div>
+                    <div class="book1">
+                        <div class="titlegenre">
+                            {{ book.title }} | {{ book.genre }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">&laquo; Назад</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="current">{{ num }}</span>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Вперёд &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

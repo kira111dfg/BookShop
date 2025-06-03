@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 from django.urls import reverse, reverse_lazy
 
+from django.db.models import Q
+
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView,ListView,CreateView
 from itertools import chain
@@ -47,20 +50,26 @@ class TagView(ListView):
 
 
 
+
 class SearchView(ListView):
     model = Book
     template_name = 'shop/book_search.html'
     context_object_name = 'books'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        title = self.request.GET.get('title')
-        genre = self.request.GET.get('genre')
-        
-        if title:
+        queryset = Book.objects.all()
+        title = self.request.GET.get('title', '').strip()
+        genre = self.request.GET.get('genre', '').strip()
+
+        if title and genre:
+            queryset = queryset.filter(
+                Q(title__icontains=title) &
+                Q(genre__title__icontains=genre)
+            )
+        elif title:
             queryset = queryset.filter(title__icontains=title)
-        if genre:
-           queryset = queryset.filter(genre__title__icontains=genre)
+        elif genre:
+            queryset = queryset.filter(genre__title__icontains=genre)
 
         return queryset
 
