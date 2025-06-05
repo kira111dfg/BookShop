@@ -16,6 +16,7 @@ class BookList(ListView):
     model=Book
     template_name='shop/booklist.html'
     context_object_name='books'
+    paginate_by=8
 
 class BookDetail(DetailView):
     model=Book

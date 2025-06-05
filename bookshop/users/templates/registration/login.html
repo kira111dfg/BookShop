@@ -1,20 +1,48 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
-    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">  
 </head>
 <body>
     <div class="form-container">
         <h2>Вход</h2>
+
+
+                {% if form.errors %}
+                <ul class="messages">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                    <li class="error-message">{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li class="error-message">{{ error }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+
+
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+            {{ form.username }}
+
+            <label for="{{ form.password.id_for_label }}">Пароль</label>
+            {{ form.password }}
+
             <button type="submit">Войти</button>
         </form>
+
         <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+        <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+
+
+
     </div>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Профиль {{ profile_author.user.username }}</title>
     <link rel="stylesheet" href="{% static 'users/css/profile_author.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" >
 
 </head>
 <body>
@@ -12,14 +13,17 @@
 
     <!-- Сайдбар -->
     <div class="sidebar">
-        {% if profile_author.avatar and profile_author.avatar.url != '/media/img/sbcf-default-avatar.png' %}
+            <div style="font-size: 28px; font-weight: bold; color: #b8860b;">
+    <a href="{%url 'booklist'%}" class='icon-link1'><i class="fas fa-book-open"></i> Книжный Мир</a>
+  </div>
+        {% if profile_author.avatar %}
             <img src="{{ profile_author.avatar.url }}" alt="Аватар" class="avatar">
         {% else %}
-            <img src="{% static 'img/sbcf-default-avatar.png' %}" alt="Аватар" class="avatar">
+            <img src="{% static 'users/img/sbcf-default-avatar.png' %}" alt="Аватар" class="avatar">
         {% endif %}
 
         <div class="btn-row">
-            <a href="{% url 'profile_author' slug=profile_author.slug %}" class="btn-link">Книги пользователя</a>
+            <a href="{% url 'profile_author' slug=profile_author.slug %}" class="btn-link">Книги автора</a>
             <a href="{% url 'profile_about' slug=profile_author.slug %}" class="btn-link">О авторе</a>
         </div>
     </div>
@@ -46,23 +50,31 @@
         </div>
 
         <!-- Пагинация -->
-        <div class="pagination">
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}">&laquo; Назад</a>
-            {% endif %}
+       <div class="pagination">
+  {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; В начало</a>
+    <a href="?page={{ page_obj.previous_page_number }}">&#8249; Назад</a>
+  {% else %}
+    <span class="disabled">&laquo; В начало</span>
+    <span class="disabled">&#8249; Назад</span>
+  {% endif %}
 
-            {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                    <span class="current">{{ num }}</span>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                    <a href="?page={{ num }}">{{ num }}</a>
-                {% endif %}
-            {% endfor %}
+  {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+      <span class="current">{{ num }}</span>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+      <a href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
 
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Вперёд &raquo;</a>
-            {% endif %}
-        </div>
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Вперед &#8250;</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">В конец &raquo;</a>
+  {% else %}
+    <span class="disabled">Вперед &#8250;</span>
+    <span class="disabled">В конец &raquo;</span>
+  {% endif %}
+</div>
     </div>
 </div>
 </body>

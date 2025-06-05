@@ -5,34 +5,40 @@
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <link rel="stylesheet" href="{% static 'users/css/reg.css' %}">
+
 </head>
 <body>
   <div class="register-container">
     <h2>Регистрация</h2>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
-      <label for="username">Имя пользователя</label>
-      <input type="text" id="username" name="username" required placeholder="Введите имя пользователя" />
+        
+        <label for="username">Имя пользователя</label>
+        <input type="text" id="username" name="username" required placeholder="Введите имя пользователя" value="{{ request.POST.username }}">
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="Введите email" />
 
-      <label for="password1">Пароль</label>
-      <input type="password" id="password1" name="password1" required placeholder="Введите пароль" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Введите email" value="{{ request.POST.email }}">
 
-      <label for="password2">Повторите пароль</label>
-      <input type="password" id="password2" name="password2" required placeholder="Повторите пароль" />
+        <label for="password1">Пароль</label>
+        <input type="password" id="password1" name="password1" required placeholder="Введите пароль">
+        
+        <label for="password2">Повторите пароль</label>
+        <input type="password" id="password2" name="password2" required placeholder="Повторите пароль">
 
-      <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Зарегистрироваться</button>
     </form>
-    <p class="login-link">Уже есть аккаунт? <a href="{%url 'login' %}">Войти</a></p>
-  </div>
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
 
-</body></html>
+    <p class="login-link">Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+  </div>
+</body>
+</html>

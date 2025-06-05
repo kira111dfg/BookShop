@@ -3,6 +3,8 @@
 {% block content %}
     <h2>Ваша корзина</h2>
 
+
+{% if cart_items %}
 <div class="container">
 
   {% for item in cart_items %}
@@ -22,6 +24,14 @@
         <div class="quantity">
           Количество: {{ item.quantity }}
         </div>
+
+
+        <div class="quantity-controls">
+  <a href="{% url 'decrease_quantity' book_id=item.book.id %}" class="btn-qty">−</a>
+  <span>{{ item.quantity }}</span>
+  <a href="{% url 'increase_quantity' book_id=item.book.id %}" class="btn-qty">+</a>
+</div>
+
       </div>
     </div>
   {% endfor %}
@@ -52,4 +62,7 @@
     <span class="disabled">В конец &raquo;</span>
   {% endif %}
 </div>
+{% else %}
+  <p class='empty-cart-message'>Ваша корзина пуста. Перейдите на <a href="{% url 'booklist' %}">главную страницу</a>, чтобы добавить книги.</p>
+{%endif%}
 {% endblock content %}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Профиль {{ profile.user.username }}</title>
     <link rel="stylesheet" href="{% static 'users/css/profile_author.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" >
     <style>
 
 
@@ -13,26 +14,32 @@
 <body>
 <div class="profile-container">
 
+    <!-- Сайдбар -->
     <div class="sidebar">
-        <!-- Аватар -->
-        {% if profile.avatar and profile.avatar.url != '/media/img/sbcf-default-avatar.png' %}
+            <div style="font-size: 28px; font-weight: bold; color: #b8860b;">
+    <a href="{%url 'booklist'%}" class='icon-link1'><i class="fas fa-book-open"></i> Книжный Мир</a>
+  </div>
+        {% if profile.avatar %}
             <img src="{{ profile.avatar.url }}" alt="Аватар" class="avatar">
         {% else %}
-            <img src="{% static 'img/sbcf-default-avatar.png' %}" alt="Аватар" class="avatar">
+            <img src="{% static 'users/img/sbcf-default-avatar.png' %}" alt="Аватар" class="avatar">
         {% endif %}
 
-        <!-- Кнопки в горизонтальном ряду -->
         <div class="btn-row">
-            <a href="{% url 'profile_author' slug=profile.slug %}" class="btn-link">Книги пользователя</a>
-            <a href="{% url 'profile_about' slug=profile.slug %}" class="btn-link">О Авторе</a>
+            <a href="{% url 'profile_author' slug=profile.slug %}" class="btn-link">Книги автора</a>
+            <a href="{% url 'profile_about' slug=profile.slug %}" class="btn-link">О авторе</a>
         </div>
     </div>
 
+    {% if profile.about %}
     <div class="content">
         <h2>Профиль пользователя: {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
         <h3>О авторе</h3>
         <p>{{ profile.about|linebreaks }}</p>
     </div>
+    {%else%}
+    <p class='no-about'>Об этом авторе ничего не известно:(</p>
+    {% endif %}
 
 </div>
 </body>

@@ -2,7 +2,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Profile
-from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
@@ -13,25 +12,37 @@ from shop.models import  Book
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.views.decorators.http import require_POST
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from django.contrib.auth.views import LoginView
+from .forms import CustomLoginForm
+
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('username').strip()
-        email = request.POST.get('email').strip()
+        username = request.POST.get('username', '').strip()
+        email = request.POST.get('email', '').strip()
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
 
-        # Проверки
-        if password1 != password2:
+        if not username or not email or not password1 or not password2:
+            messages.error(request, "Пожалуйста, заполните все поля")
+        elif password1 != password2:
             messages.error(request, "Пароли не совпадают")
         elif User.objects.filter(username=username).exists():
             messages.error(request, "Пользователь с таким именем уже существует")
         elif User.objects.filter(email=email).exists():
             messages.error(request, "Пользователь с таким email уже существует")
-        elif not username or not email or not password1:
-            messages.error(request, "Пожалуйста, заполните все поля")
         else:
-            # Создаем пользователя
+            try:
+                validate_password(password1)
+            except ValidationError as e:
+                for error in e.messages:
+                    messages.error(request, error)
+                return render(request, 'users/register.html')  # не продолжаем
+
+            # Всё ок — создаем пользователя
             user = User.objects.create_user(username=username, email=email, password=password1)
             user.save()
             messages.success(request, "Регистрация успешна! Войдите в систему.")
@@ -94,11 +105,7 @@ class ProfileViewAbout(DetailView):
     slug_url_kwarg = 'slug'
 
 
-@login_required
-def delete_avatar(request):
-    profile = request.user.profile
-    if profile.avatar:
-        profile.avatar.delete(save=False)  # удаляем файл из storage
-        profile.avatar = None               # очищаем поле
-        profile.save()
-    return redirect('profile')
+
+class MyLoginView(LoginView):
+    template_name = 'registration/login.html'
+    authentication_form = CustomLoginForm

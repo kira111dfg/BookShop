@@ -16,14 +16,38 @@
                 {{book.title}} | {{book.genre}}
             </div>
             <div class="author">
-                {% if book.author.user.is_authenticated %}
+                
                 {{book.author.user.first_name}} {{book.author.user.last_name}}
-                {% endif %}
+                
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
 </div>
+<div class="pagination">
+  {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; В начало</a>
+    <a href="?page={{ page_obj.previous_page_number }}">&#8249; Назад</a>
+  {% else %}
+    <span class="disabled">&laquo; В начало</span>
+    <span class="disabled">&#8249; Назад</span>
+  {% endif %}
 
+  {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+      <span class="current">{{ num }}</span>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+      <a href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Вперед &#8250;</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">В конец &raquo;</a>
+  {% else %}
+    <span class="disabled">Вперед &#8250;</span>
+    <span class="disabled">В конец &raquo;</span>
+  {% endif %}
+</div>
 {% endblock content %}

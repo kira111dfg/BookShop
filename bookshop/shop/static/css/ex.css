@@ -343,6 +343,63 @@ body {
 }
 
 
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-qty {
+  display: inline-block;
+  background-color: #ffd34d;
+  color: #4a3b0c;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-qty:hover {
+  background-color: #f5c542;
+}
+
+/* Стиль для сообщения о пустой корзине */
+.empty-cart-message {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 18px;
+  color: #b38600;
+  background-color: #fff7d0;
+  padding: 20px;
+  border: 2px solid #ffd34d;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(211, 180, 0, 0.4);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ссылка внутри сообщения */
+.empty-cart-message a {
+  color: #805c00;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid #ffd34d;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.empty-cart-message a:hover {
+  color: #4a3b0c;
+  border-color: #b38600;
+  cursor: pointer;
+}
+
+
 h2 {
   color: #b38600;
   font-size: 28px;

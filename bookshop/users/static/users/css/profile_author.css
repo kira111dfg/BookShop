@@ -53,10 +53,11 @@ body {
 
 /* Контент */
 .content {
-    flex-grow: 1;
-    padding: 30px;
-    background-color: #fffef5;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
 }
+
 
 .content h2 {
     color: #9a7b13;
@@ -72,7 +73,8 @@ body {
 }
 
 .el {
-    width: calc(30% - 12px); /* Было 33.333%, теперь компактнее */
+    margin-left: 8px;
+    width: 30%;
     background-color: #fff7d0;
     border: 1px solid #ffebb3;
     border-radius: 8px;
@@ -127,4 +129,35 @@ body {
 .pagination .current {
     background-color: #f5c542;
     color: white;
+}
+
+
+.icon-link1 {
+  color: #b8860b; /* обычный золотистый */
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+/* Цвет при наведении */
+.icon-link1:hover{
+  color: #e6b800; /* чуть светлее жёлтый */
+}
+
+
+
+.no-about{
+    font-size: 60px;
+    color: #b8860b;
+    font-weight: bold;
+    margin-left: 80px;
+    margin-top: 300px;
 }

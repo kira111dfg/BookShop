@@ -82,3 +82,23 @@
   .register-container .login-link a:hover {
     text-decoration: underline;
   }
+
+
+      .error-message {
+          color: #d9534f;
+          font-size: 0.9em;
+          margin-top: 4px;
+      }
+      .messages {
+          list-style: none;
+          padding: 0;
+          margin: 10px 0;
+      }
+      .messages li {
+          color: #d9534f;
+          background: #f2dede;
+          border: 1px solid #ebccd1;
+          padding: 8px 10px;
+          border-radius: 4px;
+          margin-bottom: 5px;
+      }

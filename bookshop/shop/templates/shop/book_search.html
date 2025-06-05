@@ -16,10 +16,9 @@
                 {{book.title}} | {{book.genre}}
             </div>
             <div class="author">
-                {% if book.author.is_authenticated %}
-                {% else %}
-                {{book.author}}
-                {% endif %}
+                
+                {{book.author.user.first_name}} {{book.author.user.last_name}}
+                
             </div>
         </div>
     </div>

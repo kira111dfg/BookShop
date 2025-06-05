@@ -13,20 +13,14 @@
       <div class="profile-info">
         <h2>Ваш профиль</h2>
 
-        <!-- Аватарка: своя или дефолтная -->
-        {% if user.profile.avatar and user.profile.avatar.url != '/media/img/sbcf-default-avatar.png' %}
-          <img id="avatar-preview" src="{{ user.profile.avatar.url }}" alt="Аватар"
-               style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 2px solid #ffd700; margin-bottom: 15px;">
-        {% else %}
-          <img id="avatar-preview" src="{% static 'img/sbcf-default-avatar.png' %}" alt="Аватар"
-               style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 2px solid #ffd700; margin-bottom: 15px;">
-        {% endif %}
+        <img src="{{ user.profile.avatar.url }}" alt="Аватар" class="avatar">
 
-        <!-- Поле выбора нового файла -->
+
         <div class="form-group">
-          {{ p_form.avatar.label_tag }}
-          {{ p_form.avatar }}
-        </div>
+        {{ p_form.avatar.label_tag }}
+        {{ p_form.avatar }}
+      </div>
+
 
         {{ u_form.first_name.label_tag }} {{ u_form.first_name }}
         {{ u_form.last_name.label_tag }} {{ u_form.last_name }}
@@ -48,13 +42,11 @@
           {{ p_form.address }}
         </div>
 
-        <!-- Кнопки -->
         <button type="submit">Сохранить</button>
         <button type="reset" style="margin-top: 10px;">Сбросить</button>
 
-        <a href="{% url 'delete_avatar' %}" class="delete-avatar-button" style="margin-top: 10px; display: inline-block;">
-          Удалить аватарку
-        </a>
+              
+       
       </div>
     </form>
   </div>

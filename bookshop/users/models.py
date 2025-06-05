@@ -31,7 +31,7 @@ def slugify_cyrillic(value):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to="img/", blank=True, null=True)
+    avatar = models.ImageField(upload_to="img/", default='img/sbcf-default-avatar.png',blank=True, null=True)
     address = models.CharField(max_length=255, blank=True)
     about = models.TextField(blank=True)
     slug = models.SlugField(unique=True, blank=True)
