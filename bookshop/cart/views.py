@@ -21,6 +21,7 @@ def add_to_cart(request, book_id):
 @login_required
 def cart_view(request):
     cart_items = CartItem.objects.filter(user=request.user)
+    total = sum(item.book.price * item.quantity for item in cart_items)
     paginator = Paginator(cart_items, 4)  
 
     page_number = request.GET.get('page')
@@ -29,6 +30,7 @@ def cart_view(request):
     return render(request, 'cart/cart_view.html', {
         'page_obj': page_obj,
         'cart_items': page_obj.object_list,
+        'total':total
     })
 
 
