@@ -42,7 +42,11 @@
 <div class="buy" >
 <div class="price">
     <div>{{book.price}}$</div>
-    <button type='submit'>КУПИТЬ</button>
+<form method="post" action="{% url 'create_checkout_session_for_book' book_id=book.id %}">
+    {% csrf_token %}
+    <button type="submit">КУПИТЬ</button>
+</form>
+
 </div>
 <div class="cart">
    <a href="{%url 'add_to_cart' book_id=book.id%}"><button>Добавить в корзину</button></a>

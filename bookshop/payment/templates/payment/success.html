@@ -1,0 +1,17 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата успешна</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>✅ Спасибо!</h2>
+        <p>Оплата прошла успешно. Мы приступаем к обработке вашего заказа.</p>
+        <a href="{%url 'booklist'%}"><button>Перейти на главную страницу</button></a>
+    </div>
+</body>
+</html>

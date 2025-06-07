@@ -16,6 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
+  position: relative;
 }
 
 .profile-card {
@@ -112,4 +113,64 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc;
+}
+
+
+.icon-link1 {
+  color: #b8860b; /* обычный золотистый */
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+/* Цвет при наведении */
+.icon-link1:hover{
+  color: #e6b800; /* чуть светлее жёлтый */
+}
+
+.icon-a{
+  margin-left: 630px;
+
+}
+
+.delete-avatar-label {
+  font-size: 14px;
+  color: #b8860b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delete-avatar-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Блок ошибок */
+.form-errors {
+  background-color: #ffeeba;
+  border: 1px solid #f5c6cb;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.form-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-errors li {
+  color: #842029;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
 }

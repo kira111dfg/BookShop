@@ -96,3 +96,16 @@ class Tag(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.PositiveIntegerField()

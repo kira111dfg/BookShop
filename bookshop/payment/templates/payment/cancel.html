@@ -1,0 +1,17 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата отменена</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>❌ Оплата отменена</h2>
+        <p>Вы отменили оплату. Заказ не был оформлен.</p>
+        <a href="{%url 'booklist'%}"><button>Перейти на главную страницу</button></a>
+    </div>
+</body>
+</html>

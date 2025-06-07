@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Ваша корзина</h2>
+
 
 
 {% if cart_items %}
+  <div class='buy1'> <a href="{% url 'create_checkout_session' %}" class="buy-button">Оплатить заказ</a> 
+       Ваша корзина</div>
 <div class="container">
+
 
   {% for item in cart_items %}
     <div class="el">
@@ -37,6 +40,8 @@
   {% endfor %}
 </div>
 
+
+
 <div class="pagination">
   {% if page_obj.has_previous %}
     <a href="?page=1">&laquo; В начало</a>
@@ -62,6 +67,7 @@
     <span class="disabled">В конец &raquo;</span>
   {% endif %}
 </div>
+
 {% else %}
   <p class='empty-cart-message'>Ваша корзина пуста. Перейдите на <a href="{% url 'booklist' %}">главную страницу</a>, чтобы добавить книги.</p>
 {%endif%}

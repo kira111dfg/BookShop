@@ -27,17 +27,30 @@ class UserUpdateForm(forms.ModelForm):
         }
 
 class ProfileUpdateForm(forms.ModelForm):
-    avatar = forms.ImageField(label='Аватарка',
-                              widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+    avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+    delete_avatar = forms.BooleanField(
+        required=False,
+        label='Удалить текущий аватар',
+        widget=forms.CheckboxInput(attrs={'class': 'delete-avatar-checkbox'})
+    )
+
     class Meta:
         model = Profile
-        fields = ['address','avatar','about']
-
+        fields = ['address', 'avatar',  'delete_avatar']
         labels = {
             'address': 'Адрес',
-            'about': 'О себе',
-            
+        
         }
+
+    def save(self, commit=True):
+        profile = super().save(commit=False)
+        # Если чекбокс отмечен — удаляем файл и сбрасываем поле
+        if self.cleaned_data.get('delete_avatar') and profile.avatar:
+            profile.avatar.delete(save=False)
+            profile.avatar = 'img/sbcf-default-avatar.png'
+        if commit:
+            profile.save()
+        return profile
 
 
 

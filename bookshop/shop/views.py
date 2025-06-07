@@ -52,6 +52,8 @@ class TagView(ListView):
 
 
 
+from django.db.models import Q
+
 class SearchView(ListView):
     model = Book
     template_name = 'shop/book_search.html'
@@ -61,21 +63,27 @@ class SearchView(ListView):
         queryset = Book.objects.all()
         title = self.request.GET.get('title', '').strip()
         genre = self.request.GET.get('genre', '').strip()
+        author = self.request.GET.get('author', '').strip()
 
-        if title and genre:
-            queryset = queryset.filter(
-                Q(title__icontains=title) &
-                Q(genre__title__icontains=genre)
+        # Строим Q-объекты для фильтрации
+        q_filters = Q()
+        if title:
+            q_filters &= Q(title__icontains=title)
+        if genre:
+            q_filters &= Q(genre__title__icontains=genre)
+        if author:
+            # Ищем по имени или фамилии пользователя, связанного с профилью автора
+            q_filters &= (
+                Q(author__user__first_name__icontains=author) |
+                Q(author__user__last_name__icontains=author)
             )
-        elif title:
-            queryset = queryset.filter(title__icontains=title)
-        elif genre:
-            queryset = queryset.filter(genre__title__icontains=genre)
 
-        return queryset
+        return queryset.filter(q_filters)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Передаём в шаблон значения полей поиска, чтобы они оставались в input после submit
         context['title'] = self.request.GET.get('title', '')
         context['genre'] = self.request.GET.get('genre', '')
+        context['author'] = self.request.GET.get('author', '')
         return context

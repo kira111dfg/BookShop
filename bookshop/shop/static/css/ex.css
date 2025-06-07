@@ -400,13 +400,6 @@ body {
 }
 
 
-h2 {
-  color: #b38600;
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center;
-  text-shadow: 1px 1px 1px #fff7d0;
-}
 
 .icon-link1 {
   color: #b8860b; /* обычный золотистый */
@@ -426,4 +419,61 @@ h2 {
 /* Цвет при наведении */
 .icon-link1:hover{
   color: #e6b800; /* чуть светлее жёлтый */
+}
+
+    .user-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .user-nav .logout-button,
+    .user-nav .icon-link {
+      background: none;
+      border: none;
+      color: #b8860b;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    .user-nav .logout-button:hover,
+    .user-nav .icon-link:hover {
+      color: #e6b800;
+    }
+
+
+
+.buy-button {
+    display: inline-block;
+    background-color: #f2c94c;
+    color: #333;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+}
+
+.buy-button:hover {
+    background-color: #e0b800;
+}
+
+
+.buy1{
+  margin-top: 10px;
+  color: #b38600;
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
 }

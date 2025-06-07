@@ -76,7 +76,7 @@ def profile(request):
 
 
 
-class ProfileView(LoginRequiredMixin,DetailView):
+class ProfileView(DetailView):
     model = Profile
     context_object_name = 'profile_author'
     template_name = 'users/profile_author.html'
