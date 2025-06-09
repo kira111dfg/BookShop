@@ -11,7 +11,7 @@
 
 Установка проекта:
 Клонируй репозиторий:
-git clone https://github.com/kira111dfg/django-bookstore.git
+git clone https://github.com/kira111dfg/BookShop.git
 cd django-bookstore
 Установи зависимости:
 pip install -r requirements.txt
