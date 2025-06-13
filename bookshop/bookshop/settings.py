@@ -81,8 +81,13 @@ WSGI_APPLICATION = 'bookshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bookshop',
+        'USER':'bookshop',
+        'PASSWORD':'kirakira900',
+        'HOST':'localhost',
+        'PORT':'5432',
+
     }
 }
 
