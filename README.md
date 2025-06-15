@@ -13,6 +13,7 @@
 Клонируй репозиторий:
 git clone https://github.com/kira111dfg/BookShop.git
 cd django-bookstore
+(Вы должны находиться в ветке recovery-branch)
 Установи зависимости:
 pip install -r requirements.txt
 Выполни миграции:
